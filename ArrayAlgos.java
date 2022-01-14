@@ -14,11 +14,12 @@ public class ArrayAlgos {
 		print("Hello World");
 				
 		int[] array = { 88,11,44,99,55 };
-		
-		arraySelectionSort(array);
-		
+
 		printArray(array);
-		
+		bubbleSort(array);
+		printArray(array);
+
+		//arraySelectionSort(array);
 		//int[] array = { 2,6,8,12,14,16,20,24,26,34 };
 		//int item = 20;
 		//print("LinearSearch Result " +  linearSearch(array,item));
