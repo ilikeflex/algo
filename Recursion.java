@@ -284,7 +284,7 @@ public class Recursion {
 	//Let Input String "abc"
 	//Last Result  ""
 	//With Character c ( megre "" with c) -> Output -> c
-	//With String bc	( ( megre "b" with "c") -> Output bc,cb
+	//With String bc ( megre "b" with "c") -> Output -> bc,cb
 	//With String abc	
 	// Two Steps
 	//			One Step ( ( megre "a" with "bc") -> Output abc,bac,bca
@@ -308,7 +308,7 @@ public class Recursion {
 		//System.out.println("recResult size" + recResult.size());
 		
 		ArrayList<String> currentResult = new ArrayList();
-		for(int index=0; index<recResult.size(); ++index ){
+		for(int index=0; index<recResult.size(); ++index ){ // can be better loop -> for( String oneOfTheCombination : recResult );
 			String oneOfTheCombination = recResult.get(index);
 			//System.out.println("oneOfTheCombination" + oneOfTheCombination);
 			//System.out.println("Length oneOfTheCombination " + oneOfTheCombination.length());
