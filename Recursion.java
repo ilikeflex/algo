@@ -27,15 +27,13 @@ public class Recursion {
 	public static void print(int[] array){
 
 		for(int n = 0;  n < array.length; ++n){
-			/*print(n,false);
-			print(array[n], false);
-			print("");*/
-
 			print("index " + n + " value " + array[n]);
 		}
 	}
 	
 	public static void main(String args[]){
+		
+		
 		//printIntegers(5);
 		//PD(5);
 		//PI(5);
@@ -71,8 +69,10 @@ public class Recursion {
 		/*print(getSS("abcd").size());
 		print(getSS("abcd").toString());*/
 		
-		print(getPermutation("abc").size());
-		print(getPermutation("abc").toString());
+		/*print(getPermutation("abc").size());
+		print(getPermutation("abc").toString());*/
+		
+		print(getBoardPath(0,5).toString());
 	}
 	
 	public static int printIntegers(int x){
@@ -256,7 +256,7 @@ public class Recursion {
 		//System.out.println("Input" + inputString);
 		
 		if(inputString.length() == 0)	 {
-			ArrayList<String> emptyArrayList = new ArrayList();
+			ArrayList<String> emptyArrayList = new ArrayList<>();
 			emptyArrayList.add("");
 			return emptyArrayList;
 		}
@@ -271,7 +271,7 @@ public class Recursion {
 		
 		//System.out.println("recResult" + recResult.toString());
 		
-		ArrayList<String> currentResult = new ArrayList();
+		ArrayList<String> currentResult = new ArrayList<>();
 		for(int index = 0; index < recResult.size(); ++index){
 			currentResult.add(recResult.get(index));
 			currentResult.add(cc+recResult.get(index));
@@ -293,7 +293,7 @@ public class Recursion {
 		
 		//System.out.println("Input" + inputString);
 		if(inputString.length() == 0)	 {
-			ArrayList<String> emptyArrayList = new ArrayList();
+			ArrayList<String> emptyArrayList = new ArrayList<>();
 			emptyArrayList.add("");
 			return emptyArrayList;
 		}
@@ -307,7 +307,7 @@ public class Recursion {
 		//System.out.println("recResult" + recResult.toString());
 		//System.out.println("recResult size" + recResult.size());
 		
-		ArrayList<String> currentResult = new ArrayList();
+		ArrayList<String> currentResult = new ArrayList<>();
 		for(int index=0; index<recResult.size(); ++index ){ // can be better loop -> for( String oneOfTheCombination : recResult );
 			String oneOfTheCombination = recResult.get(index);
 			//System.out.println("oneOfTheCombination" + oneOfTheCombination);
@@ -326,4 +326,32 @@ public class Recursion {
 		//System.out.println("currentResult" + currentResult.toString());
 		return currentResult;		
 	}
+	
+	public static ArrayList<String> getBoardPath(int start,int end) {
+		
+		//System.out.println("Input: start,end = " + start +  "," + end);
+		
+		if(start > end){
+			ArrayList<String> baseResult = new ArrayList<>();
+			return baseResult;
+		}
+		
+		if(start == end){
+			ArrayList<String> baseResult = new ArrayList<>();
+			baseResult.add("");
+			return baseResult;
+		}
+		
+		ArrayList<String> currentResult = new ArrayList<>();
+		for(int dice=1; dice<=6; ++dice) {
+			ArrayList<String> recResult = getBoardPath(start+dice,end);
+			for( String oneOfTheCombination : recResult ){
+				currentResult.add(dice + oneOfTheCombination);
+			}				
+		}
+					
+		
+		return currentResult;
+	}
+	
 }
