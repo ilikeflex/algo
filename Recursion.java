@@ -68,7 +68,11 @@ public class Recursion {
 		bubbleSort(array,0, array.length);
 		print(array);*/
 		
-		print(getSS("abc").toString());
+		/*print(getSS("abcd").size());
+		print(getSS("abcd").toString());*/
+		
+		print(getPermutation("abc").size());
+		print(getPermutation("abc").toString());
 	}
 	
 	public static int printIntegers(int x){
@@ -238,6 +242,8 @@ public class Recursion {
 
 	}
 	
+	//"hamburger".substring(4, 8) returns "urge" [ StartIndex from 0, beginIndex(4) is inclusive, endIndex(8) is exclusive ]
+	
 	//get Substring of given String
 	//Sample: 
 	//Input = "abc"
@@ -256,9 +262,12 @@ public class Recursion {
 		}
 		
 		char cc = inputString.charAt(0);
-		String ros = inputString.substring(1,inputString.length());
 		
-		ArrayList<String> recResult = getSS(ros);
+		// String ros = inputString.substring(1); Can also work as it will start from first and till end.
+		
+		String ros = inputString.substring(1,inputString.length()); 
+		
+		ArrayList<String> recResult = getSS(ros); // recResult is recursion result
 		
 		//System.out.println("recResult" + recResult.toString());
 		
@@ -272,5 +281,49 @@ public class Recursion {
 		return currentResult;		
 	}
 	
-
+	//Let Input String "abc"
+	//Last Result  ""
+	//With Character c ( megre "" with c) -> Output -> c
+	//With String bc	( ( megre "b" with "c") -> Output bc,cb
+	//With String abc	
+	// Two Steps
+	//			One Step ( ( megre "a" with "bc") -> Output abc,bac,bca
+	//			Second Step ( ( megre "a" with "cb") -> Output acb,cab,cba
+	public static ArrayList<String> getPermutation(String inputString) {
+		
+		//System.out.println("Input" + inputString);
+		if(inputString.length() == 0)	 {
+			ArrayList<String> emptyArrayList = new ArrayList();
+			emptyArrayList.add("");
+			return emptyArrayList;
+		}
+		
+		char cc = inputString.charAt(0);
+		// String ros = inputString.substring(1); Can also work as it will start from first and till end.
+		String ros = inputString.substring(1,inputString.length()); 
+		
+		//System.out.println("InputString" + ros);
+		ArrayList<String> recResult = getPermutation(ros); // recResult is recursion result
+		//System.out.println("recResult" + recResult.toString());
+		//System.out.println("recResult size" + recResult.size());
+		
+		ArrayList<String> currentResult = new ArrayList();
+		for(int index=0; index<recResult.size(); ++index ){
+			String oneOfTheCombination = recResult.get(index);
+			//System.out.println("oneOfTheCombination" + oneOfTheCombination);
+			//System.out.println("Length oneOfTheCombination " + oneOfTheCombination.length());
+			
+			for (int y=0; y<=oneOfTheCombination.length(); ++y ){
+				
+				String firstHalf = oneOfTheCombination.substring(0,y);
+				String secondHalf = oneOfTheCombination.substring(y); 		// String secondHalf = oneOfTheCombination.substring(y); Can also work as it will start from first and till end.
+				//System.out.println("firstHalf + cc + secondHalf = " + firstHalf + cc + secondHalf);
+				currentResult.add(firstHalf + cc + secondHalf);
+			}
+			
+		}
+		
+		//System.out.println("currentResult" + currentResult.toString());
+		return currentResult;		
+	}
 }
