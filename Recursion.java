@@ -90,22 +90,22 @@ public class Recursion {
 		PD(x-1);
 	}
 	
+	//print in increasing order
 	public static void PI(int x){
 		if(x == 0) return ;
 		PI(x-1);		
 		print(x);
 	}
 	
-	
+	//print in decreasing order
 	public static void PDI(int x){
 		if(x == 0) return ;
 		print(x);
 		PDI(x-1);
-				
 		print(x);
-		
 	}
 	
+	//print in decreasing order with skip for even numbers
 	public static void PDISkip(int x){
 	
 		if(x==0)return;
