@@ -72,7 +72,17 @@ public class Recursion {
 		/*print(getPermutation("abc").size());
 		print(getPermutation("abc").toString());*/
 		
-		print(getBoardPath(0,5).toString());
+		//print(getBoardPath(0,5).size());
+		//print(getBoardPath(0,5).toString());
+		
+		//print(getMazePath(0,0,2).toString());
+		//print(getMazePathImprove(0,0,2,2).toString());
+		//print(getMazePathDiagonal(0,0,2,2).toString());
+		
+		
+		//printSS("abc"); Not able to understand
+		
+		printPermutation("abc","");
 	}
 	
 	public static int printIntegers(int x){
@@ -352,6 +362,173 @@ public class Recursion {
 					
 		
 		return currentResult;
+	}
+	
+	
+	public static ArrayList<String> getMazePath(int startx,int starty,int end) {
+		
+		System.out.println("Input: startx,starty,end = " + startx +  "," + starty +  "," + end);
+		
+		if(startx > end){
+			ArrayList<String> endResult = new ArrayList<>();
+			return endResult;
+		}
+		
+		if(starty > end){
+			ArrayList<String> endResult = new ArrayList<>();
+			return endResult;
+		}
+		
+		if(starty == end && startx == end){
+			ArrayList<String> endResult = new ArrayList<>();
+			endResult.add("");
+			return endResult;
+		}
+		
+		
+		ArrayList<String> currentResult = new ArrayList<>();
+		
+		if(startx < end) {
+				ArrayList<String> recResult = getMazePath(startx+1,starty,end);
+				for( String oneOfTheCombination : recResult ) {
+					currentResult.add("H" + oneOfTheCombination);
+				}
+		}
+		
+		if(starty < end) {
+				ArrayList<String> recResult = getMazePath(startx,starty+1,end);
+				for( String oneOfTheCombination : recResult ) {
+					currentResult.add("V" + oneOfTheCombination);
+				}
+		}
+		return currentResult;
+	}
+	
+	
+	
+	public static ArrayList<String> getMazePathImprove(int startx,int starty,int endx, int endy) {
+		
+		System.out.println("Input: startx,starty,endx,endy = " + startx +  "," + starty +  "," + endx + "," + endy);
+		
+		if(startx > endx){
+			ArrayList<String> endResult = new ArrayList<>();
+			return endResult;
+		}
+		
+		if(starty > endy){
+			ArrayList<String> endResult = new ArrayList<>();
+			return endResult;
+		}
+		
+		if(starty == endx && startx == endy){
+			ArrayList<String> endResult = new ArrayList<>();
+			endResult.add("");
+			return endResult;
+		}
+		
+		
+		ArrayList<String> currentResult = new ArrayList<>();
+		
+	
+		ArrayList<String> recResultHorizontal = getMazePathImprove(startx+1,starty,endx,endy);//horizontal move
+		for( String oneOfTheCombination : recResultHorizontal ) {
+			currentResult.add("H" + oneOfTheCombination);
+		}
+		
+
+		ArrayList<String> recResultVertical = getMazePathImprove(startx,starty+1,endx,endy); //vertical move
+		for( String oneOfTheCombination : recResultVertical ) {
+			currentResult.add("V" + oneOfTheCombination);
+		}
+		
+		return currentResult;
+	}
+	
+	
+	public static ArrayList<String> getMazePathDiagonal(int startx,int starty,int endx, int endy) {
+		
+		System.out.println("Input: startx,starty,endx,endy = " + startx +  "," + starty +  "," + endx + "," + endy);
+		
+		if(startx > endx){
+			ArrayList<String> endResult = new ArrayList<>();
+			return endResult;
+		}
+		
+		if(starty > endy){
+			ArrayList<String> endResult = new ArrayList<>();
+			return endResult;
+		}
+		
+		if(starty == endx && startx == endy){
+			ArrayList<String> endResult = new ArrayList<>();
+			endResult.add("");
+			return endResult;
+		}
+		
+		
+		ArrayList<String> currentResult = new ArrayList<>();
+		
+		
+		ArrayList<String> recResultHorizontal = getMazePathDiagonal(startx+1,starty,endx,endy);//horizontal move
+		for( String oneOfTheCombination : recResultHorizontal ) {
+			currentResult.add("H" + oneOfTheCombination);
+		}
+		
+		ArrayList<String> recResultVertical = getMazePathDiagonal(startx,starty+1,endx,endy); //vertical move
+		for( String oneOfTheCombination : recResultVertical ) {
+			currentResult.add("V" + oneOfTheCombination);
+		}
+		
+		ArrayList<String> recResultDiagonal = getMazePathDiagonal(startx+1,starty+1,endx,endy); //diagonal move
+		for( String oneOfTheCombination : recResultDiagonal ) {
+			currentResult.add("D" + oneOfTheCombination);
+		}
+			
+		
+		return currentResult;
+	}
+	
+	/*
+	static void printSS(String inputString,String result) {
+		
+		if(inputString.length==0)
+			return;
+		else
+			System.out.println(inputString);
+				
+		char cc = inputString.getChar(0);
+		String ros = inputString.substring(1,inputString.length());
+		
+		ArrayList<String> currentResult = new ArrayList<>();
+		
+		printSS(ros);
+		
+		for(String oneOfTheCombination:recResult)
+			System.out.println(cc+oneOfTheCombination);
+		
+		return currentResult;
+		
+	}
+	*/
+	
+	static void printPermutation(String question, String answer) {
+		
+		//System.out.println("InputString question + answer = " + question + "," + answer);
+		
+		if(question.length()==0)
+			System.out.println(answer);
+		
+		for(int x=0; x<question.length(); ++x){
+			String firstHalf = question.substring(0,x); // first half
+			String cc = question.substring(x,x+1); //get single character
+			String secondHalf = question.substring(x+1,question.length()); // get secondHalf
+			//System.out.println("firstHalf + cc + secondHalf = " + firstHalf + "," + cc + "," +secondHalf);
+			String newQuestion =  firstHalf+secondHalf;
+			String newAnswer = answer + cc;
+			printPermutation(newQuestion,newAnswer);
+		}
+		
+		
 	}
 	
 }
