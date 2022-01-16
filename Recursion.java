@@ -82,7 +82,13 @@ public class Recursion {
 		
 		//printSS("abc"); Not able to understand
 		
-		printPermutation("abc","");
+		//printPermutation("abc","");
+		
+		//printBoardPath("",0,5);
+		
+		//printMazePath("",0,0,2,2);
+		
+		printMazePathDiagonal("",0,0,2,2);
 	}
 	
 	public static int printIntegers(int x){
@@ -529,6 +535,85 @@ public class Recursion {
 		}
 		
 		
+	}
+	
+	
+	static void printBoardPath(String diceTotalPath, int diceTotal, int finalNumber) {
+		
+		//System.out.println("InputString diceTotalPath,diceTotal,finalNumber = " + diceTotalPath + "," + diceTotal + "," + finalNumber);
+		
+		if(diceTotal==finalNumber) {
+			System.out.println(diceTotalPath);
+			return;
+		}
+		
+		if(diceTotal>finalNumber)
+			return;
+		
+		
+		for(int currentDiceNumber=1; currentDiceNumber<6; ++currentDiceNumber){
+			int addAllDiceNumbersTotal = currentDiceNumber + diceTotal;
+			String newdiceTotalPath = String.valueOf(currentDiceNumber) + diceTotalPath;
+			//System.out.println("newdiceTotalPath = " + newdiceTotalPath);
+			printBoardPath(newdiceTotalPath,addAllDiceNumbersTotal,finalNumber);			
+		}
+			
+	}
+	
+	
+	
+	static void printMazePath(String answer, int startx, int starty,  int endx, int endy) {
+		
+		//System.out.println("InputString diceTotalPath,diceTotal,finalNumber = " + diceTotalPath + "," + diceTotal + "," + finalNumber);
+		
+		if(startx==endx && starty==endy) {
+			System.out.println(answer);
+			return;
+		}
+		
+		if(startx>endx) {
+			return;
+		}
+		
+		if(starty>endy) {
+			return;
+		}
+		
+		String newHanswer = answer + "H";
+		printMazePath(newHanswer,startx+1,starty,endx,endy);
+		
+		String newVanswer = answer + "V";
+		printMazePath(newVanswer,startx,starty+1,endx,endy);
+			
+	}
+	
+	static void printMazePathDiagonal(String answer, int startx, int starty,  int endx, int endy) {
+		
+		//System.out.println("InputString diceTotalPath,diceTotal,finalNumber = " + diceTotalPath + "," + diceTotal + "," + finalNumber);
+		
+		if(startx==endx && starty==endy) {
+			System.out.println(answer);
+			return;
+		}
+		
+		if(startx>endx) {
+			return;
+		}
+		
+		if(starty>endy) {
+			return;
+		}
+		
+		String newHanswer = answer + "H";
+		printMazePathDiagonal(newHanswer,startx+1,starty,endx,endy);
+		
+		String newVanswer = answer + "V";
+		printMazePathDiagonal(newVanswer,startx,starty+1,endx,endy);
+		
+		String newDanswer = answer + "D";
+		printMazePathDiagonal(newDanswer,startx+1,starty+1,endx,endy);
+		
+			
 	}
 	
 }
