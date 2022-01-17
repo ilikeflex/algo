@@ -15,3 +15,6 @@ GetMazePath
 
 Print Permutation
 ![This is an image](/assets/images/GetPrintPermutation.JPG)
+
+Print NCountQueens
+![This is an image](/assets/images/PrintNQueens0.JPG)
