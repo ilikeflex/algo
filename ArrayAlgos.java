@@ -13,12 +13,12 @@ public class ArrayAlgos 	{
 	public static void main(String arr[]){
 		print("Hello World");
 				
-		int[] array = { 88,11,44,99,55 };
+		/*int[] array = { 88,11,44,99,55 };
 		print("Input Array");
 		printArray(array);
 		bubbleSort(array);
 		print("Sorted Array");
-		printArray(array);
+		printArray(array);*/
 
 		//arraySelectionSort(array);
 		
@@ -28,6 +28,17 @@ public class ArrayAlgos 	{
 		
 		//int[] array = { 2,6,8,12,14,16,20,24,26,34 }; [ BinarySearch Needs Array Item In Sorted Order ]
 		//print("BinarySearch Result " +  binarySearch(array, 16));
+		
+		
+		/*int[] array1 = {10,11,44,45,55};
+		int[] array2 = {4};*/
+		//printArray(mergeTwoSortedArrays(array1,array2));
+		
+		int[] array = {45,78,12,45};
+		print("Input Array");
+		printArray(array);
+		print("Result Array");
+		printArray(mergeSort(array,0,array.length-1));
 	}
 	
 	public static void arraySelectionSort(int[] array){
@@ -60,6 +71,69 @@ public class ArrayAlgos 	{
 			}
 		}
 	}
+	
+	//MergeSort:
+	//Input: Array1 which all elements in sorted order ( increasing order)
+	//Input: Array2 which all elements in sorted order ( increasing order)
+	//Output: Array3(Result) which will have all elements sorted combined of array1 and array2
+	public static int[] mergeTwoSortedArrays(int[] array1,int[] array2){
+		int[] result = new int[array1.length + array2.length];
+		
+		int i=0,j=0,k=0;
+		
+		while ( i < array1.length || j < array2.length ) {
+			
+			if( i == array1.length && j < array2.length )
+			{
+				result[k] = array2[j];
+				++k;
+				++j;
+			}
+			
+			if( j == array2.length && i < array1.length )
+			{
+				result[k] = array1[i];
+				++k;
+				++i;
+			}
+			
+			if(i < array1.length && j < array2.length && array1[i]<array2[j]){
+				result[k] = array1[i];
+				++k;
+				++i;
+			}
+			else if(i < array1.length && j < array2.length && array1[i]>=array2[j]){
+				result[k] = array2[j];
+				++k;
+				++j;
+			}				
+		}
+		
+		return result;
+		
+	}
+	
+	public static int[] mergeSort(int[] array,int low, int high){
+		
+		if( low == high ) {
+			//System.out.println("Value" + low + "array.length=" + array.length);
+			int[] result = new int[1];
+			result[0] = array[low];
+			return result;
+		}
+			
+		
+		int mid = (low+high)/2;
+		
+		int[] fh = mergeSort(array,low,mid);
+		int[] sh = mergeSort(array,mid+1,high);
+		
+		int[] result = mergeTwoSortedArrays(fh,sh);
+		
+		return result;
+	}
+	
+	
 	
 	//Input: Array
 	//Input: Item to find in Array
