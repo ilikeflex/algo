@@ -1,4 +1,4 @@
-public class ArrayAlgos {
+public class ArrayAlgos 	{
 	
 	public static void print(String statement) {
 		System.out.println(statement);
@@ -14,16 +14,20 @@ public class ArrayAlgos {
 		print("Hello World");
 				
 		int[] array = { 88,11,44,99,55 };
-
+		print("Input Array");
 		printArray(array);
 		bubbleSort(array);
+		print("Sorted Array");
 		printArray(array);
 
 		//arraySelectionSort(array);
-		//int[] array = { 2,6,8,12,14,16,20,24,26,34 };
-		//int item = 20;
-		//print("LinearSearch Result " +  linearSearch(array,item));
-		//print("BinarySearch Result " +  binarySearch(array,item));
+		
+		/*int[] array = { 88,11,44,99,55 };
+		int item = 99;
+		print("LinearSearch Result " +  linearSearch(array,item));*/
+		
+		//int[] array = { 2,6,8,12,14,16,20,24,26,34 }; [ BinarySearch Needs Array Item In Sorted Order ]
+		//print("BinarySearch Result " +  binarySearch(array, 16));
 	}
 	
 	public static void arraySelectionSort(int[] array){
@@ -43,7 +47,9 @@ public class ArrayAlgos {
 		array[arrayIndex] = array[arrayIndex2];
 		array[arrayIndex2] = temp;
 	}
-	
+
+	//Input: Array	
+	//Result will be Sorted Array as array is passed by reference
 	public static void bubbleSort (int[] array){
 		for ( int counter = 0; counter <= array.length; ++counter )
 		{
@@ -55,6 +61,9 @@ public class ArrayAlgos {
 		}
 	}
 	
+	//Input: Array
+	//Input: Item to find in Array
+	//Result: Location of the item in array
 	public static int linearSearch (int[] array, int item){
 		print("Inside linearSearch");
 		int index = -1;
@@ -68,6 +77,9 @@ public class ArrayAlgos {
 		return index;
 	}
 	
+	//Input: Sorted Array
+	//Input: Item to find in Array
+	//Prequiste : Array should be sorted
 	public static int binarySearch (int[] array, int item){
 		print("Inside binarySearch");
 		int index = -1;
