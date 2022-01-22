@@ -4,10 +4,27 @@ public class ArrayAlgos 	{
 		System.out.println(statement);
 	}
 	
+	public static void print(String statement, boolean newLine) {
+		if(newLine)
+			System.out.println(statement);
+		else
+			System.out.print(statement);
+	}
+	
 	public static void printArray(int[] array) {
-		for(int arrayIndex=0; arrayIndex<=array.length - 1 ; ++arrayIndex){
+		for(int arrayIndex=0; arrayIndex<=array.length-1 ; ++arrayIndex){
 			print("value at  index " + arrayIndex +  " = " +  array[arrayIndex]);
 		}
+	}
+	
+	public static void print(int[] array) {
+		for(int arrayIndex=0; arrayIndex<=array.length-1 ; ++arrayIndex){
+			if(arrayIndex < (array.length-1) )
+				print("[" + arrayIndex +  "]=" +  array[arrayIndex] + ",", false);
+			else
+				print("[" + arrayIndex +  "]=" +  array[arrayIndex], false);
+		}
+		System.out.println("");
 	}
 	
 	public static void main(String arr[]){
@@ -34,11 +51,74 @@ public class ArrayAlgos 	{
 		int[] array2 = {4};*/
 		//printArray(mergeTwoSortedArrays(array1,array2));
 		
-		int[] array = {45,78,12,45};
+		/*int[] array = {45,78,12,45};
 		print("Input Array");
 		printArray(array);
 		print("Result Array");
-		printArray(mergeSort(array,0,array.length-1));
+		printArray(mergeSort(array,0,array.length-1));*/
+		
+		
+		
+		//int[] array = {40,20,90,30,70,10,80,60,50};
+		int[] array = {40,20,90,30,70};
+		print("Input Array");
+		print(array);
+		quickSort(array,0,array.length-1);
+		print("Result Array");
+		print(array);
+		
+	}
+	
+	public static void quickSort(int[] array, int low, int high){
+		
+		//print(array);		
+		if(low >= high) {
+			return;
+		}
+						
+		int left = low;
+		int right = high;
+		int pivotPoint = (low + high)/2;
+		
+		//print("Before Bigger Loop left=" + left + " ,right=" + right);
+		
+		while(left<=right){		
+			
+			//print("left" + left + " ,array[left]" + array[left]);
+			//print("pivotPoint" + pivotPoint + " ,array[pivotPoint]" + array[pivotPoint]);
+			while(array[left]<array[pivotPoint]){
+				//print("inside left loop left" + left + " ,array[left]" + array[left]);
+				++left;
+			}
+			//print("Left should be 2 and value should be 90, left=" + left + " ,array[left]=" + array[left]);
+			while(array[right]>array[pivotPoint]){
+				--right;
+			}
+			
+			if(left<=right){
+				//print("swap");
+				//print("swap left" + left + " ,array[left]" + array[left]);
+				//print("swap right" + right + " ,array[right]" + array[right]);
+				int temp = array[left];
+				array[left] = array[right];
+				array[right] = temp;
+				
+				++left;
+				--right;
+			}
+			
+			/*++left; This does not work but why ???
+			--right;*/
+			
+			
+			print("After each loop");
+			print(array);	
+		}
+		
+		//print("End Bigger Loop left=" + left + " ,right=" + right);
+		quickSort(array,low,right);
+		quickSort(array,left,high);
+		
 	}
 	
 	public static void arraySelectionSort(int[] array){
@@ -134,6 +214,19 @@ public class ArrayAlgos 	{
 	}
 	
 	
+	
+	
+	private static int[] getArrayElements(int[] array,int start, int end){
+		
+		System.out.println("start=" + start + ",end=" + end);
+		
+		int[] result = new int[end-start];
+		for(int x = start, y = 0; x < end; ++x, ++y)
+			result[y] = array[x];
+		
+		return result;
+		
+	}
 	
 	//Input: Array
 	//Input: Item to find in Array

@@ -24,3 +24,8 @@ MergeSort Requirement
 ![This is an image](/assets/images/MergeSortArray.JPG)
 MergeSort Explanation
 ![This is an image](/assets/images/MergeSortArray1.JPG)
+![This is an image](/assets/images/MergeSortArray2.JPG)
+
+
+Time Complexity
+![This is an image](/assets/images/TimeComplexity.JPG)
