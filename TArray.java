@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
-public class TArray {
+/* Class Just Print Array */
+
+public class PrintArray {
 	
 	public static void print(String statement) {
 		System.out.println(statement);
