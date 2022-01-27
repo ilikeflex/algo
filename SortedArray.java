@@ -44,7 +44,7 @@ public class SortedArray {
 		boolean result = true;	
 		for( int x=selectedIndex; x<array.length-1; ++x){
 			
-			if(array[x+1] > array[x])
+			if(array[x+1] >= array[x])
 			{
 				boolean currentResult = isArrayInIncreasingOrder(array,x+1);
 				result = result && currentResult;
