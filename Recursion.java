@@ -332,7 +332,9 @@ public class Recursion {
 			for (int y=0; y<=oneOfTheCombination.length(); ++y ){
 				
 				String firstHalf = oneOfTheCombination.substring(0,y);
-				String secondHalf = oneOfTheCombination.substring(y); 		// String secondHalf = oneOfTheCombination.substring(y); Can also work as it will start from first and till end.
+				// String secondHalf = oneOfTheCombination.substring(y,oneOfTheCombination.length()); Can also work as it will start from first and till end.
+				// oneOfTheCombination.substring(y,oneOfTheCombination.length()) is same as oneOfTheCombination.substring(y)
+				String secondHalf = oneOfTheCombination.substring(y); 		
 				//System.out.println("firstHalf + cc + secondHalf = " + firstHalf + cc + secondHalf);
 				currentResult.add(firstHalf + cc + secondHalf);
 			}
@@ -396,14 +398,16 @@ public class Recursion {
 		
 		if(startx < end) {
 				ArrayList<String> recResult = getMazePath(startx+1,starty,end);
-				for( String oneOfTheCombination : recResult ) { // for condition which are not satisfied, empty array will return and will not contribut to end result
+				// for condition which are not satisfied, empty array will return and will not contribute to end result
+				for( String oneOfTheCombination : recResult ) { 
 					currentResult.add("H" + oneOfTheCombination);
 				}
 		}
 		
 		if(starty < end) {
 				ArrayList<String> recResult = getMazePath(startx,starty+1,end);
-				for( String oneOfTheCombination : recResult ) { // for condition which are not satisfied, empty array will return and will not contribut to end result
+				// for condition which are not satisfied, empty array will return and will not contribute to end result
+				for( String oneOfTheCombination : recResult ) { 
 					currentResult.add("V" + oneOfTheCombination);
 				}
 		}
