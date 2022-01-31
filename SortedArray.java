@@ -29,7 +29,7 @@ public class SortedArray {
 		int[] array = new int[Integer.parseInt(sizeofArray)];
 		String[] result = elementsofArray.split("\\s");
 		for (int x=0; x<result.length; x++)
-         array[x] = Integer.parseInt(result[x]);
+         		array[x] = Integer.parseInt(result[x]);
 	 
 		System.out.println(isArrayInIncreasingOrder(array,0));
 	 
