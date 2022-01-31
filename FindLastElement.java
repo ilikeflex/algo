@@ -29,16 +29,26 @@ public class FindLastElement {
 
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
-		String sizeofArray = sc.nextLine();
+
+		int sizeofArray = sc.nextInt();
+		//System.out.println("sizeofArray:="+sizeofArray);
+
+		sc.nextLine();
+
 		String elementsofArray = sc.nextLine();
-		String elementToSearch = sc.nextLine();
-		int[] array = new int[Integer.parseInt(sizeofArray)];
+		//System.out.println("elementsofArray:="+elementsofArray);
+
+		int elementToSearch = sc.nextInt();
+		//System.out.println("elementToSearch:="+elementToSearch);
+
+		int[] array = new int[sizeofArray];
 		String[] result = elementsofArray.split("\\s");
+		
 		for (int x=0; x<result.length; x++)
          array[x] = Integer.parseInt(result[x]);
 	 
 	 
-		System.out.println(findLastElement(array,Integer.parseInt(elementToSearch),0));
+		System.out.println(findLastElement(array,elementToSearch,0));
 
 	}
 	
