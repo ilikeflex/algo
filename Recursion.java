@@ -360,7 +360,7 @@ public class Recursion {
 		
 		ArrayList<String> currentResult = new ArrayList<>();
 		for(int dice=1; dice<=6; ++dice) {
-			ArrayList<String> recResult = getBoardPath(start+dice,end);
+			ArrayList<String> recResult = getBoardPath(start+dice,end); // start + dice, gives where we have reached the count
 			for( String oneOfTheCombination : recResult ){
 				currentResult.add(dice + oneOfTheCombination);
 			}				
