@@ -33,10 +33,8 @@ public class DuplicateCharacterFormatting {
 		//System.out.println("input="+input+",selectedIndex="+selectedIndex+",input.length()-1="+(input.length() - 1));
 		
 		if(selectedIndex == input.length() - 1 ){
-			String result = input.substring(selectedIndex,input.length());
-			//System.out.println("Result="+result);
+			String result = input.substring(selectedIndex);
 			return result;
-			//return input;
 		}
 				
 		for(int x=selectedIndex; x<input.length()-1 ; ++x){
@@ -52,9 +50,9 @@ public class DuplicateCharacterFormatting {
 				input = sb.toString();
 			}
 			
-			System.out.println("Before input="+input+",selectedIndex="+selectedIndex+",input.length()-1="+(input.length() - 1)+",currentchar="+currentchar+",nextchar="+nextchar);
+			//stem.out.println("Before input="+input+",selectedIndex="+selectedIndex+",input.length()-1="+(input.length() - 1)+",currentchar="+currentchar+",nextchar="+nextchar);
 			duplicateNumberFormatting(input,x+1);
-			System.out.println("After input="+input+",selectedIndex="+selectedIndex+",input.length()-1="+(input.length() - 1)+",currentchar="+currentchar+",nextchar="+nextchar);
+			//stem.out.println("After input="+input+",selectedIndex="+selectedIndex+",input.length()-1="+(input.length() - 1)+",currentchar="+currentchar+",nextchar="+nextchar);
 		}
 		
 		return input;
