@@ -396,14 +396,14 @@ public class Recursion {
 		
 		if(startx < end) {
 				ArrayList<String> recResult = getMazePath(startx+1,starty,end);
-				for( String oneOfTheCombination : recResult ) {
+				for( String oneOfTheCombination : recResult ) { // for condition which are not satisfied, empty array will return and will not contribut to end result
 					currentResult.add("H" + oneOfTheCombination);
 				}
 		}
 		
 		if(starty < end) {
 				ArrayList<String> recResult = getMazePath(startx,starty+1,end);
-				for( String oneOfTheCombination : recResult ) {
+				for( String oneOfTheCombination : recResult ) { // for condition which are not satisfied, empty array will return and will not contribut to end result
 					currentResult.add("V" + oneOfTheCombination);
 				}
 		}
