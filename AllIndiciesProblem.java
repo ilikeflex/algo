@@ -39,32 +39,27 @@ public class AllIndiciesProblem {
 
 	public static void main(String args[]){
 		Scanner sc = new Scanner(System.in);
-
 		int sizeofArray = sc.nextInt();
-		//System.out.println("sizeofArray:="+sizeofArray);
 
 		sc.nextLine();
 
-		String elementsofArray = sc.nextLine();
-		//System.out.println("elementsofArray:="+elementsofArray);
-
-		int elementToSearch = sc.nextInt();
-		//System.out.println("elementToSearch:="+elementToSearch);
-
 		int[] array = new int[sizeofArray];
-		String[] result = elementsofArray.split("\\s");
+		for (int x=0; x<array.length; x++){
+			int arrayElement = sc.nextInt();
+			sc.nextLine();
+			array[x] = arrayElement;
+		}
 		
-		for (int x=0; x<result.length; x++)
-         array[x] = Integer.parseInt(result[x]);
-	 
+		
+		int elementToSearch = sc.nextInt();
 	 
 		int[] resultAllIndicies = allIndiciesProblem(array,elementToSearch,0,0);
 		
 		for(int n = 0;  n < resultAllIndicies.length; ++n){
-			if(n == array.length -1 )
-				System.out.print(array[n]);
+			if(n == resultAllIndicies.length -1 )
+				System.out.print(resultAllIndicies[n]);
 			else	
-				System.out.print(array[n] + " ");
+				System.out.print(resultAllIndicies[n] + " ");
 		}
 		
 		//print("Final Result");
