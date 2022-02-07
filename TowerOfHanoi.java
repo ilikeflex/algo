@@ -35,12 +35,14 @@ Explanation
 Read Tower of Hanoi
 */
 
-
+import java.util.Scanner;
 public class TowerOfHanoi {
 	public static void main(String str[]){
+		Scanner sc = new Scanner(System.in);
+		int input = sc.nextInt();
 		//towerOfHanoi(3,"S","D","T");
 		// A is the source, B is the temporary, C is the destination
-		towerOfHanoi(3,"A","C","B");
+		towerOfHanoi(input,"A","C","B");
 	}
 	
 	static void towerOfHanoi(int disc, String source, String destination, String temporary){
