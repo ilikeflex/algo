@@ -33,6 +33,6 @@ Time Complexity
 ![This is an image](/assets/images/TimeComplexity.JPG)
 
 Tower of Hanoi
-![This is an image](/assets/images/TowerofHanoi.png)
 ![This is an image](/assets/images/TowerofHanoi0.png)
+![This is an image](/assets/images/TowerofHanoi.png)
 ![This is an image](/assets/images/TowerofHanoi2.png)
