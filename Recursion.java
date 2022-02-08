@@ -430,7 +430,7 @@ public class Recursion {
 			return endResult;
 		}
 		
-		if(starty == endx && startx == endy){
+		if(starty == endy && startx == endx){
 			ArrayList<String> endResult = new ArrayList<>();
 			endResult.add("");
 			return endResult;
@@ -469,7 +469,7 @@ public class Recursion {
 			return endResult;
 		}
 		
-		if(starty == endx && startx == endy){
+		if(starty == endy && startx == endx){
 			ArrayList<String> endResult = new ArrayList<>();
 			endResult.add("");
 			return endResult;
