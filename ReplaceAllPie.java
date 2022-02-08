@@ -36,14 +36,14 @@ public class ReplaceAllPie {
         //System.out.println(s);
 
         if(input.length() < selectedIndex + 2 && !isPiPresent) {
-            System.out.println("input.length() < selectedIndex + 2 && !isPiPresent");
+            //System.out.println("input.length() < selectedIndex + 2 && !isPiPresent");
             return "";
             //return "EMPTY";
         }
 
 
         if(input.length() < selectedIndex + 2 && isPiPresent) {
-            System.out.println("input.length() < selectedIndex + 2 && isPiPresent");
+            //System.out.println("input.length() < selectedIndex + 2 && isPiPresent");
             return input;
         }
 
