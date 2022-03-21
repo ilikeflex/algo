@@ -47,11 +47,11 @@ public class TowerOfHanoi {
 	
 	static void towerOfHanoi(int disc, String source, String destination, String temporary){
 		
-		if ( disc == 1 )
+		if ( disc == 0 )
 		{
-			String s = String.format("Moving ring %d from %s to %s",disc,source,destination);
-			System.out.println(s);
-			//return;
+			//String s = String.format("Moving ring %d from %s to %s",disc,source,destination);
+			//System.out.println(s);
+			return;
 		}
 		else
 		{
