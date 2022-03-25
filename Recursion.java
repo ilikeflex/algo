@@ -53,8 +53,8 @@ public class Recursion {
 		//print("Result integer at index = " + firstIndex(array,0,7));
 		
 		
-		//int[] array =  {3,8,1,8,8,7};
-		//print("Result integer at index = " + lastIndex(array,0,8));
+		int[] array =  {3,8,1,8,8,7};
+		print("Result integer at index = " + lastIndex(array,0,8));
 		//print("Result integer at index = " + lastIndex(array,0,9));
 		
 		/*int[] array =  {3,8,1,8,8,7};
@@ -88,7 +88,7 @@ public class Recursion {
 		
 		//printMazePath("",0,0,2,2);
 		
-		printMazePathDiagonal("",0,0,2,2);
+		//printMazePathDiagonal("",0,0,2,2);
 	}
 	
 	public static int printIntegers(int x){
@@ -99,7 +99,7 @@ public class Recursion {
 		}
 	}
 	
-	
+	//print in decreasing order
 	public static void PD(int x){
 		if(x == 0) return ;
 		print(x);
@@ -113,7 +113,7 @@ public class Recursion {
 		print(x);
 	}
 	
-	//print in decreasing order
+	//print in decreasing and then increasing order
 	public static void PDI(int x){
 		if(x == 0) return ;
 		print(x);
