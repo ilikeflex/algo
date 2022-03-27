@@ -260,7 +260,7 @@ public class Recursion {
 			arr[si] = temp;
 		}
 		
-		bubbleSort(arr,si+1, li);	
+		bubbleSort(arr,si+1,li);	
 
 	}
 	
@@ -279,7 +279,7 @@ public class Recursion {
 		
 		if(inputString.length() == 0)	 {
 			ArrayList<String> emptyArrayList = new ArrayList<>();
-			emptyArrayList.add("");
+			emptyArrayList.add("");    // we need to add this because every string will have "" as one of substring.
 			return emptyArrayList;
 		}
 		
