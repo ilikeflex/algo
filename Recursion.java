@@ -53,8 +53,8 @@ public class Recursion {
 		//print("Result integer at index = " + firstIndex(array,0,7));
 		
 		
-		int[] array =  {3,8,1,8,8,7};
-		print("Result integer at index = " + lastIndex(array,0,8));
+		//int[] array =  {3,8,1,8,8,7};
+		//print("Result integer at index = " + lastIndex(array,0,8));
 		//print("Result integer at index = " + lastIndex(array,0,9));
 		
 		/*int[] array =  {3,8,1,8,8,7};
@@ -62,9 +62,12 @@ public class Recursion {
 
 		//pattern(5,0,0);
 
-		/*int[] array =  {3,8,1,8,8,7};
-		bubbleSort(array,0, array.length);
-		print(array);*/
+		int[] array =  {3,8,1,8,8,7};
+		print("Before");
+		print(array);
+		bubbleSort(array,3,array.length-1);
+		print("After");
+		print(array);
 		
 		/*print(getSS("abcd").size());
 		print(getSS("abcd").toString());*/
@@ -242,19 +245,22 @@ public class Recursion {
 
 	public static void bubbleSort(int[] arr, int si, int li){
 
-		if( arr.length == si ) return;
-
-		for( int x = si ; x < arr.length - 1; ++x) {
-			for (int y = si + 1; y < arr.length -1 ; ++y) {
-				if (arr[x] > arr[y+1]) {
-					int temp = arr[y+1];
-					arr[y+1] = arr[x];
-					arr[x] = temp;
-				}
-			}
+		if(li==0) return;
+		
+		if( li == si ) {
+			li = li - 1;
+			bubbleSort(arr,0, li);
+			return;
 		}
 
-		bubbleSort(arr,si+1, li);
+	
+		if(arr[si]>arr[si+1]){
+			int temp = arr[si+1];
+			arr[si+1] = arr[si];
+			arr[si] = temp;
+		}
+		
+		bubbleSort(arr,si+1, li);	
 
 	}
 	
