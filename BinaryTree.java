@@ -1,6 +1,8 @@
-
-
 /*
+
+Command To Enter
+50 yes 25 yes 38 no no yes 48 yes 18 no no no yes 45 yes 85 no no yes 60 no no
+10 yes 20 yes 40 no no yes 50 no no yes 30 no yes 60 no no
 
 Tree
 				50
@@ -9,6 +11,10 @@ Tree
    x  x   18  x	   x  x    x  x
 
 
+Tree
+				10
+			20		30
+		  40  50   X  60
 
 */
 import java.util.ArrayList;
@@ -36,6 +42,7 @@ public class BinaryTree {
 	  this.root = takeInput( s, null, false );
 	}
 	
+	//isLeftOrRight = true means left node
 	private Node takeInput(Scanner s, Node parent, boolean isLeftOrRight){
 		
 		if( parent == null ) {
@@ -78,8 +85,7 @@ public class BinaryTree {
 	}
 	
 	
-	// Returns true if s is
-    // a number else false
+	// Returns true if s is a number else false
     static boolean isNumber(String s)
     {
         for (int i = 0; i < s.length(); i++)
@@ -91,7 +97,6 @@ public class BinaryTree {
 	
 	
 	private static String checkInput(String input, Scanner s){
-		
 		
 		if (isNumber(input)) {
 			System.out.println("Enter yes/no");
@@ -105,9 +110,7 @@ public class BinaryTree {
 	//https://www.geeksforgeeks.org/java-program-to-convert-a-string-to-boolean/
 	private static boolean  stringToBoolean(String str)
     {
-        // convert a given string to
-        // its primitive boolean value
-        // using parseBoolean() method
+        // convert a given string to its primitive boolean value using parseBoolean() method
         boolean b1
             = Boolean.parseBoolean(str);
 			
@@ -121,8 +124,42 @@ public class BinaryTree {
 	
 	
 	public void display(){
-		display(root);
+		display2(root);
 	}
+	
+	
+	public void display2(Node node) {
+		
+		if(node == null )
+			return;
+		
+		String str = "";
+		
+		if(node.left != null)
+		{
+			str += node.left.data + ">>";
+		}
+		else {
+			str += "END=>";
+		}
+		
+		str += node.data;
+		
+		if(node.right != null)
+		{
+			str +=  "<=" + node.right.data;
+		}
+		else {
+			str += "<=END";
+		}
+
+		System.out.println(str);
+		
+		display2(node.left);
+		display2(node.right);
+		
+	}
+	
 	
 	public void display(Node node){
 
@@ -149,22 +186,24 @@ public class BinaryTree {
 			System.out.print(str);
 		}
 		
+		System.out.println();
+		
 		if(node.left != null){
 			display(node.left);
-			System.out.println();
+			
 		}
 		
 		if(node.right != null){
 			display(node.right);
-			System.out.println();
 		}	
 	}
 	
 	public void preOrderdisplay(){
 		preOrderdisplay(root);
+		System.out.println("PRE ORDER END");
 	}
 	
-	//Output - 30,25,38,48,45,85,60
+	//Output - 50,25,38,48,18,45,85,60
 	public void preOrderdisplay(Node node){
 
 		System.out.print(node.data + ",");
@@ -178,9 +217,99 @@ public class BinaryTree {
 		}
 	}
 	
+	//Another way
+	public void preOrderdisplay2(Node node){
+		if(node == null) return;
+		System.out.print(node.data + ",");
+		preOrderdisplay(node.left);
+		preOrderdisplay(node.right);		
+	}
+	
+	//38,25,18,48,50,85,45,60
+	public void inOrderdisplay(){
+		inOrderdisplay(root);
+		System.out.println("INORDER END");
+	}
+	
+	public void inOrderdisplay(Node node){
+
+		if(node.left != null){
+			inOrderdisplay(node.left);
+		}
+		else
+		{
+			System.out.print(node.data + ",");
+			return;
+		}
+
+		System.out.print(node.data + ",");
+		
+		if(node.right != null){
+			inOrderdisplay(node.right);
+		}
+		else {
+			System.out.print(node.data + ",");
+			return ;
+		}
+		
+	}
+	
+	//Anotherway 2
+	public void inOrderdisplay2(Node node){
+
+		if(node == null) return;
+		inOrderdisplay2(node.left);
+		System.out.print(node.data + ",");
+		inOrderdisplay2(node.right);
+		
+	}
+
+	//38,18,48,25,85,60,45,50
+	public void postOrderDisplay(){
+		postOrderDisplay2(root);
+		System.out.println(" POST ORDER END");
+	}
+	
+	//Anotherway 2
+	public void postOrderDisplay2(Node node){
+		if(node == null) return;
+		postOrderDisplay2(node.left);
+		postOrderDisplay2(node.right);
+		System.out.print(node.data + ",");
+	}	
+	
+	
+	//Expected 50,25,45,38,48,85,60,18 
+	public void levelOrderDisplay(){
+		levelOrderDisplay(root);
+		System.out.println(" LEVEL ORDER END IS NOT CORRECT");
+	}
+	
+	//Anotherway 2
+	public void levelOrderDisplay(Node node){
+		if(node == null) return;
+		
+		System.out.print(node.data + ",");
+		
+		if(node.left != null){
+			System.out.print(node.left.data + ",");
+		}
+		
+		if(node.right != null){
+			System.out.print(node.right.data + ",");
+		}
+			
+		levelOrderDisplay(node.right);
+		System.out.print(node.data + ",");
+	}	
+	
+	
 	public static void main(String[] str){
 		BinaryTree tree = new BinaryTree();
-		//tree.display();
+		tree.display();
 		tree.preOrderdisplay();
+		tree.inOrderdisplay();
+		tree.postOrderDisplay();
+		tree.levelOrderDisplay();
 	}
 }
