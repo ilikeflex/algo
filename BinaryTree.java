@@ -56,7 +56,8 @@ public class BinaryTree {
 		
 		boolean choice = false;
 		System.out.println("Do you have left child of " + nodeData);
-		choice = s.nextBoolean();
+		//choice = s.nextBoolean();
+		choice = stringToBoolean(checkInput(s.next(),s));;
 		
 		if(choice){
 			node.left = takeInput(s, node , true);
@@ -64,7 +65,8 @@ public class BinaryTree {
 		
 		choice = false;
 		System.out.println("Do you have right child of " + nodeData);
-		choice = s.nextBoolean();
+		//choice = s.nextBoolean();
+		choice = stringToBoolean(checkInput(s.next(),s));
 		
 		
 		if(choice){
@@ -74,6 +76,49 @@ public class BinaryTree {
 		return node;
 		
 	}
+	
+	
+	// Returns true if s is
+    // a number else false
+    static boolean isNumber(String s)
+    {
+        for (int i = 0; i < s.length(); i++)
+            if (Character.isDigit(s.charAt(i)) == false)
+                return false;
+ 
+        return true;
+    }
+	
+	
+	private static String checkInput(String input, Scanner s){
+		
+		
+		if (isNumber(input)) {
+			System.out.println("Enter yes/no");
+			input  = s.next();
+		}
+		
+		return input;
+		
+	}
+	
+	//https://www.geeksforgeeks.org/java-program-to-convert-a-string-to-boolean/
+	private static boolean  stringToBoolean(String str)
+    {
+        // convert a given string to
+        // its primitive boolean value
+        // using parseBoolean() method
+        boolean b1
+            = Boolean.parseBoolean(str);
+			
+		if(str.equalsIgnoreCase("yes")){
+			b1 = true;
+		}			
+  
+        // returns primitive boolean value
+        return b1;
+    }
+	
 	
 	public void display(){
 		display(root);
@@ -124,20 +169,13 @@ public class BinaryTree {
 
 		System.out.print(node.data + ",");
 		
-		if(node.left != null)
-		{
-			String str = node.left.data + ",";
-			System.out.print(str);
+		if(node.left != null){
+			preOrderdisplay(node.left);
 		}
-		
-		preOrderdisplay(node.left);
 				
 		if(node.right != null){
-			String str = node.right.data + ",";
-			System.out.print(str);
-		}	
-		
-		preOrderdisplay(node.right);
+			preOrderdisplay(node.right);
+		}
 	}
 	
 	public static void main(String[] str){
