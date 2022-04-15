@@ -13,8 +13,9 @@ Tree
 
 Tree
 				10
-			20		30
-		  40  50   X  60
+		20				30
+	40  	50   	X  		60
+   X  X	   X  X            X  X
 
 */
 import java.util.ArrayList;
