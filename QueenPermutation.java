@@ -1,6 +1,8 @@
 //Backtracing
 public class QueenPermutation {
 
+	static int count = 0;
+	
 	public static void main(String[] args) {
 		QueenPermutation(new boolean[4], 0, 2, "") ;
 	}
@@ -12,7 +14,8 @@ public class QueenPermutation {
 	public static void QueenPermutation(boolean[] boxes, int qpsf, int tq, String answer) {
 		
 		if (qpsf == tq) {
-			System.out.println(answer);
+			++count;
+			System.out.println(count + " " + answer);
 			return;
 		}
 		
@@ -20,6 +23,7 @@ public class QueenPermutation {
 			
 			if( boxes[i] == false){ // check if the queen is not present then place the queen else ignore position
 				boxes[i] = true;
+				//System.out.println(String.format("queenplaced at box ={%d},qpsf={%d},tq={%d},answer={%s},loop={%d}", i, qpsf + 1, tq , answer + "b" + i + "q" + qpsf + "," , i));
 				QueenPermutation(boxes, qpsf + 1, tq , answer + "b" + i + "q" + qpsf + ",");
 				boxes[i] = false;
 			}

@@ -23,7 +23,4 @@ Sample Output
 public class TilingProblem {
 	public static void main(String str[]){
 	}
-	
-	static void (){
-	}
 }
