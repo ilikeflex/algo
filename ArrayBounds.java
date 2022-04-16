@@ -30,7 +30,7 @@ public class ArrayBounds {
 			
 			
 			if( array[mid] == data ){
-				high = mid - 1; //Only Change in Upper and Lower Bound
+				high = mid - 1; //Only Difference in Upper and Lower Bound Algorithms.
 				ans = mid;
 			}
 			else if ( array[mid] > data ){
@@ -63,7 +63,7 @@ public class ArrayBounds {
 			
 			
 			if( array[mid] == data ){
-				low = mid + 1; //Only Change in Upper and Lower Bound
+				low = mid + 1; //Only Difference in Upper and Lower Bound Algorithms.
 				ans = mid;
 			}
 			else if ( array[mid] > data ){
