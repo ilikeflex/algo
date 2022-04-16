@@ -21,7 +21,7 @@ Tree
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+import java.lang.Math;
 
 public class BinaryTree {
 
@@ -291,8 +291,81 @@ public class BinaryTree {
         levelOrderDisplay(node.right);
         System.out.print(node.data + ",");
     }
+	
+	public void calculateSize(){
+		System.out.println("Size = " + size(this.root));
+	}
 
-
+	private int size(Node node) {		
+		
+		int count = 0;	
+		
+		if(node == null) 
+			return count;
+		
+		if(node != null) 
+			++count;
+				
+		
+		count = count + size(node.left);
+		
+		count = count + size(node.right);
+		
+		return count;
+		
+	}
+	
+	public void max() {
+		System.out.println("MAX = " + max(this.root));
+	}
+	
+	private int max(Node node){
+		
+		if(node == null) 
+			return -1;
+				
+		
+		int result = Math.max(node.data,max(node.left));
+		result = Math.max(result,max(node.right));
+		
+		return result;
+	}
+	
+	public void find() {
+		
+		Scanner s = new Scanner(System.in);
+		System.out.println("ENTER NODE TO FIND = ");
+		int nodeToFound = s.nextInt();
+		
+		System.out.println("FOUND = " + find(this.root,nodeToFound));
+	}
+	
+	private boolean find(Node node, int nodeToFound){
+		
+		if(node == null) 
+			return false;
+		
+		System.out.println("Node to test " + node.data);
+				
+		boolean result = node.data == nodeToFound ;
+		
+		if(result)		
+			return true;
+			
+		result = find(node.left,nodeToFound);
+		
+		//any node in left is equal return then no need to go more left and no need to go right
+		if(result) return true;
+		
+		result = find(node.right,nodeToFound);
+		
+		//any node in right is equal then no need to go more right
+		if(result) return true;
+		
+		return result;
+	}
+	
+	
     public static void main(String[] str) {
         BinaryTree tree = new BinaryTree();
         tree.display();
@@ -300,5 +373,8 @@ public class BinaryTree {
         tree.inOrderdisplay();
         tree.postOrderDisplay();
         tree.levelOrderDisplay();
+		tree.calculateSize();
+		tree.max();
+		tree.find();
     }
 }
