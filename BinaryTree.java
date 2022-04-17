@@ -1,21 +1,27 @@
 /*
 
 Command To Enter
-50 yes 25 yes 38 no no yes 48 yes 18 no no no yes 45 yes 85 no no yes 60 no no
-10 yes 20 yes 40 no no yes 50 no no yes 30 no yes 60 no no
 
-Tree
+
+
+
+Tree(50 yes 25 yes 38 no no yes 48 yes 18 no no no yes 45 yes 85 no no yes 60 no no)
 				50
 		25				45
 	38		48		85		60	
       18
 
 
-Tree
+Tree(10 yes 20 yes 40 no no yes 50 no no yes 30 no yes 60 no no)
 				10
 		20				30
 	40		50		x		60
    
+Tree(10 yes 20 yes 40 no no yes 50 yes 17 no no no yes 30 no yes 60 no no)
+				10
+		20				30
+	40		50		x		60
+           17 X   	
 
 */
 
@@ -385,6 +391,22 @@ public class BinaryTree {
 		return rheight;
 	}
 	
+	public void diameter(){
+		System.out.println("Height of Tree " + diameter(this.root));
+	}
+	
+	private static int diameter(Node node){
+		
+		if( node == null )
+			return 0;
+				
+		int lheight = heightofTree(node.left);
+		int rheight = heightofTree(node.right);		
+	
+		return lheight + rheight + 2;
+	}
+	
+	
 	
     public static void main(String[] str) {
         BinaryTree tree = new BinaryTree();
@@ -397,5 +419,6 @@ public class BinaryTree {
 		tree.max();
 		tree.find();
 		tree.heightofTree();
+		tree.diameter();
     }
 }
