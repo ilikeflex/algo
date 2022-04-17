@@ -365,6 +365,26 @@ public class BinaryTree {
 		return result;
 	}
 	
+	public void heightofTree(){
+		System.out.println("Height of Tree " + heightofTree(this.root));
+	}
+	
+	private static int heightofTree(Node node){
+		
+		if( node == null )
+			return -1;
+				
+		int height = 1;
+		
+		int lheight = height + heightofTree(node.left);
+		int rheight = height + heightofTree(node.right);
+		
+		if(lheight>=rheight)
+			return lheight;
+		
+		return rheight;
+	}
+	
 	
     public static void main(String[] str) {
         BinaryTree tree = new BinaryTree();
@@ -376,5 +396,6 @@ public class BinaryTree {
 		tree.calculateSize();
 		tree.max();
 		tree.find();
+		tree.heightofTree();
     }
 }
