@@ -409,9 +409,10 @@ public class BinaryTree {
 		if( node == null )
 			return 0;
 		
+		int leftdiameter = diameter(node.left);
+		int rightdiameter = diameter(node.right);
 		int selfdiameter = heightofTree(node.left) +  heightofTree(node.right) + 2;		// if node is itself part of diameter node
-		int leftdiameter = diameterOfNode(node.left);
-		int rightdiameter = diameterOfNode(node.right);
+		
 		
 		return Math.max(selfdiameter,Math.max(leftdiameter,rightdiameter));
 		
