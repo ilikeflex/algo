@@ -21,8 +21,8 @@ Tree(10 yes 20 yes 40 no no yes 50 yes 17 no no no yes 30 no yes 60 no yes 80 no
 				10
 		20				30
 	40		50		x		60
-           17 X   	`	   X   80
-							  X  90
+                       17 X   	`	              X   80
+							 X  90
 
 */
 
@@ -426,10 +426,10 @@ public class BinaryTree {
         tree.inOrderdisplay();
         tree.postOrderDisplay();
         tree.levelOrderDisplay();
-		tree.calculateSize();
-		tree.max();
-		tree.find();
-		tree.heightofTree();
-		tree.diameter();
+	tree.calculateSize();
+	tree.max();
+	tree.find();
+	tree.heightofTree();
+	tree.diameter();
     }
 }
