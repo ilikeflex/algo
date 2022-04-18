@@ -17,11 +17,12 @@ Tree(10 yes 20 yes 40 no no yes 50 no no yes 30 no yes 60 no no)
 		20				30
 	40		50		x		60
    
-Tree(10 yes 20 yes 40 no no yes 50 yes 17 no no no yes 30 no yes 60 no no)
+Tree(10 yes 20 yes 40 no no yes 50 yes 17 no no no yes 30 no yes 60 no yes 80 no yes 90 no no)
 				10
 		20				30
 	40		50		x		60
-           17 X   	
+           17 X   	`	   X   80
+							  X  90
 
 */
 
@@ -392,18 +393,28 @@ public class BinaryTree {
 	}
 	
 	public void diameter(){
-		System.out.println("Height of Tree " + diameter(this.root));
+		System.out.println("Diameter of Tree " + diameter(this.root));
+	}
+	
+	private static int diameterOfNode(Node node){
+		
+		int lheight = heightofTree(node.left);
+		int rheight = heightofTree(node.right);		
+		int totaldiamter = lheight + rheight + 2;
+		return totaldiamter;
 	}
 	
 	private static int diameter(Node node){
 		
 		if( node == null )
 			return 0;
-				
-		int lheight = heightofTree(node.left);
-		int rheight = heightofTree(node.right);		
-	
-		return lheight + rheight + 2;
+		
+		int selfdiameter = heightofTree(node.left) +  heightofTree(node.right) + 2;		// if node is itself part of diameter node
+		int leftdiameter = diameterOfNode(node.left);
+		int rightdiameter = diameterOfNode(node.right);
+		
+		return Math.max(selfdiameter,Math.max(leftdiameter,rightdiameter));
+		
 	}
 	
 	
