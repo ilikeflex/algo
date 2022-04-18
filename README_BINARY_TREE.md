@@ -1,4 +1,6 @@
 
+Height of Tree
+![This is an image](/assets/images/binarytree/HeightOfTree.png)
 
 ![This is an image](/assets/images/binarytree/IMG_20220325_113332.jpg)
 ![This is an image](/assets/images/binarytree/IMG_20220325_113750.jpg)
