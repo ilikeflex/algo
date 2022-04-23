@@ -2,9 +2,6 @@
 
 Command To Enter
 
-
-
-
 Tree(50 yes 25 yes 38 no no yes 48 yes 18 no no no yes 45 yes 85 no no yes 60 no no)
 				50
 		25				45
@@ -396,6 +393,7 @@ public class BinaryTree {
 		System.out.println("Diameter of Tree " + diameter(this.root));
 	}
 	
+	/*
 	private static int diameterOfNode(Node node){
 		
 		int lheight = heightofTree(node.left);
@@ -403,6 +401,7 @@ public class BinaryTree {
 		int totaldiamter = lheight + rheight + 2;
 		return totaldiamter;
 	}
+	*/
 	
 	private static int diameter(Node node){
 		
@@ -419,6 +418,42 @@ public class BinaryTree {
 	}
 	
 	
+	public void diameterOptimize(){
+		
+		System.out.println("Diameter of diameterOptimize " + diameterOptimize(this.root).dia);
+		
+	}
+	
+	private class DiaPair {
+		int dia;
+		int ht;
+	}
+	
+	private DiaPair diameterOptimize(Node node){
+		
+		if( node == null )
+		{
+			DiaPair dp = new DiaPair();
+			dp.ht = -1; //base condition for height of tree
+			dp.dia = 0; //base condition for diameter
+			return dp;
+		};
+		
+		DiaPair leftdp = diameterOptimize(node.left);
+
+		
+		DiaPair rightdp = diameterOptimize(node.right);
+
+		int selfdiameter = leftdp.ht +  rightdp.ht + 2;		// if node is itself part of diameter node
+		int finaldiameter = Math.max(selfdiameter,Math.max(leftdp.dia,rightdp.dia));
+		
+		DiaPair result = new DiaPair();
+		result.dia = finaldiameter;
+		result.ht = Math.max(leftdp.ht,rightdp.ht) + 1;
+		return result;
+		 
+		
+	}
 	
     public static void main(String[] str) {
         BinaryTree tree = new BinaryTree();
@@ -432,5 +467,6 @@ public class BinaryTree {
 	tree.find();
 	tree.heightofTree();
 	tree.diameter();
+	tree.diameterOptimize();
     }
 }
