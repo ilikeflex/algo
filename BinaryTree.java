@@ -21,6 +21,8 @@ Tree(10 yes 20 yes 40 no no yes 50 yes 17 no no no yes 30 no yes 60 no yes 80 no
                        17 X   	`	              X   80
 							 X  90
 
+Tree(10 yes 20 yes 40 yes 70 yes 90 yes 110 no no no no no yes 50 no yes 80 no yes 100 no yes 120 no no yes 30 no yes 60 no no)
+
 */
 
 import java.util.ArrayList;
@@ -455,16 +457,6 @@ public class BinaryTree {
 		
 	}
 	
-
-	
-	private boolean checkCondition(int balancedFactor){
-		
-		if( balancedFactor == -1 | balancedFactor == 0 | balancedFactor == 1 )
-			return true;
-		else
-			return false;
-	}
-	
 	public void isBalanced(){
 		
 		System.out.println("Node Balanced " + isBalanced(this.root));
@@ -484,6 +476,53 @@ public class BinaryTree {
 		
 		return result;
 	}
+	
+	private boolean checkCondition(int balancedFactor){
+		
+		if( balancedFactor == -1 || balancedFactor == 0 || balancedFactor == 1 )
+			return true;
+		else
+			return false;
+	}
+	
+	
+	
+	private class BalPair{
+		boolean isBalanced = true; //base condiiton for balanced tree
+		int ht = -1; //base condition for height of tree
+	}
+	
+	
+	public void isBalancedOptimize(){
+		
+		System.out.println("Node Balanced Optimize " + isBalancedOptimize(this.root).isBalanced);
+		
+	}
+	
+	private boolean checkConditionOptimize(int balancedFactor){
+		
+		if( balancedFactor == -1 || balancedFactor == 0 || balancedFactor == 1 )
+			return true;
+		else
+			return false;
+	}
+	
+	private BalPair isBalancedOptimi ze(Node node){
+		
+		if(node==null)
+			return new BalPair();
+		
+		BalPair lbp = isBalancedOptimize(node.left); // lbp = left balanced pair
+		BalPair rbp = isBalancedOptimize(node.right); // rbp = right balanced pair
+		
+		BalPair cbp = new BalPair(); // cbp = current balanced pair
+		int bf = lbp.ht - rbp.ht; //bf = balanced factor
+		boolean result = lbp.isBalanced && rbp.isBalanced && checkConditionOptimize(bf); // check if the current node is balanced
+		cbp.ht = Math.max(lbp.ht,rbp.ht) + 1;
+		cbp.isBalanced = result;
+		
+		return cbp;
+	}
 		
 	
     public static void main(String[] str) {
@@ -493,12 +532,13 @@ public class BinaryTree {
         tree.inOrderdisplay();
         tree.postOrderDisplay();
         tree.levelOrderDisplay();
-	tree.calculateSize();
-	tree.max();
-	tree.find();
-	tree.heightofTree();
-	tree.diameter();
-	tree.diameterOptimize();
-	tree.isBalanced();
+		tree.calculateSize();
+		tree.max();
+		tree.find();
+		tree.heightofTree();
+		tree.diameter();
+		tree.diameterOptimize();
+		tree.isBalanced();
+		tree.isBalancedOptimize();
     }
 }
