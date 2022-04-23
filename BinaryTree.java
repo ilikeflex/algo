@@ -455,6 +455,37 @@ public class BinaryTree {
 		
 	}
 	
+
+	
+	private boolean checkCondition(int balancedFactor){
+		
+		if( balancedFactor == -1 | balancedFactor == 0 | balancedFactor == 1 )
+			return true;
+		else
+			return false;
+	}
+	
+	public void isBalanced(){
+		
+		System.out.println("Node Balanced " + isBalanced(this.root));
+		
+	}
+	
+	private boolean isBalanced(Node node){
+		
+		if(node==null)
+			return true;
+		
+		boolean lb = isBalanced(node.left);
+		boolean rb = isBalanced(node.right);
+		int bf = heightofTree(node.left) - heightofTree(node.right);
+		
+		boolean result = lb && rb && checkCondition(bf);
+		
+		return result;
+	}
+		
+	
     public static void main(String[] str) {
         BinaryTree tree = new BinaryTree();
         tree.display();
@@ -468,5 +499,6 @@ public class BinaryTree {
 	tree.heightofTree();
 	tree.diameter();
 	tree.diameterOptimize();
+	tree.isBalanced();
     }
 }
