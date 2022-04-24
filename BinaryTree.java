@@ -523,67 +523,6 @@ public class BinaryTree {
 		
 		return cbp;
 	}
-	
-	public void flipEquivalent(BinaryTree node2){
-		System.out.print(" flipEquivalent " + flipEquivalent(this.root,node2.root));
-	}
-	
-	private String print(Node node){
-	
-		if(node != null )
-			return String.valueOf(node.data);
-		else
-			return "NULL";
-	}
-	
-	
-	private boolean flipEquivalent(Node node1, Node node2){
-		
-		System.out.println("Node Value node1.data=" + print(node1) + "node2.data=" + print(node2));
-		
-		if( node1 == null && node2 == null ) {
-			return true;
-		}
-		
-		// can be written better 
-		/*
-			if( node1 == null || node2 == null ) {
-				return false;
-			}
-		*/
-		
-		if( node1 != null && node2 == null ) {
-			
-			return false;
-		}
-		
-		if( node1 == null && node2 != null ) {
-			
-			return false;
-		}
-		
-		if( node1.data != node2.data ) {
-			
-			return false;
-		}	
-		
-		
-		boolean ll = flipEquivalent(node1.left, node2.left); // ll = left left
-		boolean rr = flipEquivalent(node1.right, node2.right); // rr = right right
-		
-		if( ll && rr )
-			return true;
-		
-		
-		boolean lr = flipEquivalent(node1.left, node2.right); // lr = left right
-		boolean rl = flipEquivalent(node1.right, node2.left); // rl = right left
-		
-			
-		if( (ll && rr) || ( lr && rl ) )
-			return true;
-		else
-			return false;
-	}
 		
 	
     public static void main(String[] str) {
