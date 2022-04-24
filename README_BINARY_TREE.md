@@ -17,3 +17,7 @@ Height of Tree
 ![This is an image](/assets/images/binarytree/IMG_20220415_110235.jpg)
 ![This is an image](/assets/images/binarytree/IMG_20220325_005857.jpg)
 ![This is an image](/assets/images/binarytree/IMG_20220325_021204.jpg)
+
+
+Flip Equivalent
+![This is an image](/assets/images/binarytree/FlipEqv.jpg)
