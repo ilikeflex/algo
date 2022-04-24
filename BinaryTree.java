@@ -507,7 +507,7 @@ public class BinaryTree {
 			return false;
 	}
 	
-	private BalPair isBalancedOptimi ze(Node node){
+	private BalPair isBalancedOptimize(Node node){
 		
 		if(node==null)
 			return new BalPair();
