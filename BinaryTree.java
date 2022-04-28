@@ -601,5 +601,10 @@ public class BinaryTree {
 		tree.diameterOptimize();
 		tree.isBalanced();
 		tree.isBalancedOptimize();
+		
+		
+		BinaryTree tree2 = new BinaryTree();
+		tree.flipEquivalent(tree2);
+		
     }
 }
