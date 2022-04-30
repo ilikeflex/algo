@@ -289,6 +289,67 @@ public class LinkedList {
 		
 	}
 	
+	public void reverseData() throws Exception{
+		
+		int left = 0;
+		int right = this.size - 1;
+		
+		while ( left < right ) {
+			
+			Node ln = getNodeAt(left);
+			Node rn = getNodeAt(right);
+			
+			int temp = ln.data;
+			ln.data = rn.data;
+			rn.data = temp;
+			
+			left++;
+			right--;
+		}
+	}
+	
+	
+	public void reversePointers() throws Exception{
+		
+		Node previous = this.head;
+		Node current = previous.next;
+		
+		while ( current != null ) {
+			
+			Node ahead = current.next;//order is very important in the loops.
+			current.next = previous;
+			previous = current;
+			current = ahead;
+		}
+			
+		Node temp = this.head;
+		this.head = this.tail;
+		this.tail = temp;
+		this.tail.next = null;
+		
+	}
+	
+	
+	/*  this is working and tested. 
+	public void reverseData() throws Exception{
+				
+		int loops = this.size/2;
+		System.out.println(" loops  " + loops);
+		
+		for (int k = 0; k < loops ; ++k) {
+			
+			Node startvalue = getNodeAt(k);
+			Node endvalue = getNodeAt(this.size-(k+1));
+			
+			System.out.println("startvalue = " + startvalue.data + " lastValue.data " + endvalue.data);
+			
+			int temp = startvalue.data;
+			startvalue.data = endvalue.data;
+			endvalue.data = temp;
+		}
+		
+	}
+	*/
 	
 	public static void main(String arg[]) throws Exception {
 		LinkedList ls = new LinkedList();
@@ -359,5 +420,26 @@ public class LinkedList {
 		System.out.println("Print removeAt(1)->" + ls.removeAt(1));
 		System.out.println("Print removeAt(ls.size()-1)->" + ls.removeAt(ls.size()-1)); //index will be -1 of size
 		ls.display();
+		
+		
+		System.out.println("New List");
+		
+		ls = new LinkedList();
+		ls.addFirst(10);
+		ls.addFirst(20);
+		ls.addFirst(30);
+		ls.addFirst(40);
+		ls.addFirst(50);
+		ls.addNodeAt(1,100);
+		//ls.addNodeAt(1,500);
+		ls.display();
+		System.out.println("Print Size->" + ls.size());
+		System.out.println("Reverse Data");
+		ls.reverseData();
+		ls.display();
+		ls.reversePointers();
+		ls.display();
+		
+		
 	}
 }
