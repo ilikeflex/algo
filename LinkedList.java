@@ -103,6 +103,11 @@ public class LinkedList {
 		return this.tail.data;
 	}	
 	
+	public int getAt(int index) throws Exception {
+		
+		return getItemAt(index);
+	}
+	
 	//O(n)
 	public int getItemAt(int index) throws Exception {
 		
@@ -212,6 +217,78 @@ public class LinkedList {
 		
 	}
 	
+	public int size(){
+		return this.size;
+	}
+	
+	//Complexity Order(n)
+	public int removeLast() throws Exception {
+		
+		if(this.size == 0) 
+		{ 
+			throw new Exception("LL is empty"); 
+		}
+		int rv = -1;
+		
+		if ( this.size == 1 ) {
+			
+			this.head = null;
+			this.tail = null;
+			this.size = 0;
+			rv = 0;
+			
+		}
+		else {
+			
+			Node lastNode = this.getNodeAt(this.size-1);
+			rv = lastNode.data;
+			
+			Node nodeLastButOne = this.getNodeAt(this.size-2); //getNodeAt(1);
+			this.tail = nodeLastButOne;
+			nodeLastButOne.next = null;
+			
+			this.size--;
+			
+		}	
+		
+		return rv;
+		
+	}
+	
+	//0(n)
+	public int removeAt(int index) throws Exception{
+		
+		if( index < 0 || index > size)
+			throw new Exception("Index is out in Linked List");
+		
+		if(this.size == 0) 
+			throw new Exception("LL is empty"); 
+		
+		int rv = -1;
+		
+		if ( index == 0 ) {
+			rv = removeFirst();
+		}
+		else if ( index == this.size-1 ) {
+			rv = this.removeLast();
+		}
+		else {
+			
+			Node nodeAtIndex = this.getNodeAt(index);
+			rv = nodeAtIndex.data;
+			
+			Node nodeIndexMinusOne = this.getNodeAt(index-1);
+			Node nodeIndexPlusOne = this.getNodeAt(index+1); //getNodeAt(1);
+			
+			nodeIndexMinusOne.next = nodeIndexPlusOne;
+			
+			this.size--;
+		}	
+		
+		return rv;
+		
+	}
+	
 	
 	public static void main(String arg[]) throws Exception {
 		LinkedList ls = new LinkedList();
@@ -267,9 +344,20 @@ public class LinkedList {
 		ls.addFirst(30);
 		ls.addFirst(40);
 		ls.addFirst(50);
+		ls.addNodeAt(1,100);
 		System.out.println("Display");
 		ls.display();
-		System.out.println("Print Last" + ls.getLast());
-		System.out.println("Print First" + ls.getFirst());
+		System.out.println("Print Size->" + ls.size());
+		System.out.println("Print Last->" + ls.getLast());
+		System.out.println("Print First->" + ls.getFirst());
+		System.out.println("Print getAt(1)->" + ls.getAt(1));
+		System.out.println("Remove First->" + ls.removeFirst());
+		System.out.println("Remove Last->" + ls.removeLast());
+		ls.display();
+		System.out.println("Print Size->" + ls.size());
+		System.out.println("Print removeAt(2)->" + ls.removeAt(2));
+		System.out.println("Print removeAt(1)->" + ls.removeAt(1));
+		System.out.println("Print removeAt(ls.size()-1)->" + ls.removeAt(ls.size()-1)); //index will be -1 of size
+		ls.display();
 	}
 }
