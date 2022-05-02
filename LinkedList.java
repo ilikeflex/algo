@@ -289,6 +289,7 @@ public class LinkedList {
 		
 	}
 	
+	//O(n)
 	public void reverseData() throws Exception{
 		
 		int left = 0;
@@ -308,7 +309,7 @@ public class LinkedList {
 		}
 	}
 	
-	
+	//O(n)
 	public void reversePointers() throws Exception{
 		
 		Node previous = this.head;
@@ -329,6 +330,24 @@ public class LinkedList {
 		
 	}
 	
+	//Get Mid Node but you cannot you size in any way
+	public int getslow() {
+		
+		Node fast = this.head;
+		Node slow = this.head;
+		
+		while(fast != null){
+			//System.out.println("slow=" + slow.data + ",fastNode=" + fast.data);
+			if(fast.next != null && fast.next.next != null){
+				slow = slow.next; //frined is jumping at normal speed
+				fast = fast.next.next; //gfriend is jumping at twice speed
+			}
+			else {
+				fast = fast.next; 
+			}
+		}
+		return slow.data;
+	}
 	
 	/*  this is working and tested. 
 	public void reverseData() throws Exception{
@@ -439,6 +458,8 @@ public class LinkedList {
 		ls.display();
 		ls.reversePointers();
 		ls.display();
+		
+		System.out.println("Print Mid Node->" + ls.getslow());
 		
 		
 	}
