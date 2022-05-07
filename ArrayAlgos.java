@@ -39,6 +39,11 @@ public class ArrayAlgos 	{
 
 		//arraySelectionSort(array);
 		
+		//insertion sort
+		int[] arrayInput = { 88,11,44,99,55 };
+		insertionSort(arrayInput);
+		printArray(arrayInput);
+		
 		/*int[] array = { 88,11,44,99,55 };
 		int item = 99;
 		print("LinearSearch Result " +  linearSearch(array,item));*/
@@ -60,13 +65,34 @@ public class ArrayAlgos 	{
 		
 		
 		//int[] array = {40,20,90,30,70,10,80,60,50};
+		/*
 		int[] array = {40,20,90,30,70};
 		print("Input Array");
 		print(array);
 		quickSort(array,0,array.length-1);
 		print("Result Array");
 		print(array);
+		*/
 		
+	}
+	
+	
+	public static void insertionSort(int[] arr){
+		
+		System.out.println(" Array Length " + arr.length );
+		
+		for( int counter = 1; counter < arr.length; ++counter ){
+		
+			int val = arr[counter];
+			int j = counter - 1;
+			
+			while(j >= 0 && arr[j] > val) {
+				arr[j+1] = arr[j];
+				j--;
+			}
+			
+			arr[j+1] = val;
+		}
 	}
 	
 	public static void quickSort(int[] array, int low, int high){
@@ -141,6 +167,8 @@ public class ArrayAlgos 	{
 
 	//Input: Array	
 	//Result will be Sorted Array as array is passed by reference
+	//Worst Case Performance 0(N2) -> N square
+	//Suitbale for smaller datasets.
 	public static void bubbleSort (int[] array){
 		for ( int counter = 0; counter <= array.length; ++counter )
 		{
