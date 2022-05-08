@@ -6,7 +6,7 @@ Tree(50 yes 25 yes 38 no no yes 48 yes 18 no no no yes 45 yes 85 no no yes 60 no
 								50
 				25							45
 		38				48				85		60	
-					18
+                     18
 
 
 Tree(10 yes 20 yes 40 no no yes 50 no no yes 30 no yes 60 no no)
@@ -225,7 +225,7 @@ public class BinaryTree {
 
     //38,25,18,48,50,85,45,60
     public void inOrderdisplay() {
-        inOrderdisplay(root);
+        inOrderdisplay2(root);
         System.out.println("INORDER END");
     }
 
@@ -589,9 +589,9 @@ public class BinaryTree {
     public static void main(String[] str) {
         BinaryTree tree = new BinaryTree();
         tree.display();
-        tree.preOrderdisplay();
+        //tree.preOrderdisplay();
         tree.inOrderdisplay();
-        tree.postOrderDisplay();
+        /*tree.postOrderDisplay();
         tree.levelOrderDisplay();
 		tree.calculateSize();
 		tree.max();
@@ -605,6 +605,6 @@ public class BinaryTree {
 		
 		BinaryTree tree2 = new BinaryTree();
 		tree.flipEquivalent(tree2);
-		
+		*/
     }
 }
