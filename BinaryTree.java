@@ -3,10 +3,10 @@
 Command To Enter
 
 Tree(50 yes 25 yes 38 no no yes 48 yes 18 no no no yes 45 yes 85 no no yes 60 no no)
-				50
-		25				45
-	38		48		85		60	
-      18
+								50
+				25							45
+		38				48				85		60	
+					18
 
 
 Tree(10 yes 20 yes 40 no no yes 50 no no yes 30 no yes 60 no no)
