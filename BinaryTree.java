@@ -587,12 +587,12 @@ public class BinaryTree {
 		
 	
     public static void main(String[] str) {
-        BinaryTree tree = new BinaryTree();
-        tree.display();
-        //tree.preOrderdisplay();
-        tree.inOrderdisplay();
-        /*tree.postOrderDisplay();
-        tree.levelOrderDisplay();
+		BinaryTree tree = new BinaryTree();
+		tree.display();
+		//tree.preOrderdisplay();
+		tree.inOrderdisplay();
+		/*tree.postOrderDisplay();
+		tree.levelOrderDisplay();
 		tree.calculateSize();
 		tree.max();
 		tree.find();
