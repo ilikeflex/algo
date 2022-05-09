@@ -38,6 +38,29 @@ The tree looks like
                3       1
             /    \
            6      7
+Sample Input 3
+1 2 3 4 5 -1 6 -1 -1 -1 -1 -1 -1
+Sample Output
+1 2 4
+                 1
+               /   \
+              2     3
+             / \     \
+            4   5     6 
+Sample Input 4
+1 2 3 -1 4 -1 -1 -1 5 -1 6 -1 -1
+        1
+      /   \
+    2       3
+      \   
+        4  
+          \
+            5
+             \
+               6
+Output :1 2 4 5 6
+
+
 
 */
 import java.util.*;
