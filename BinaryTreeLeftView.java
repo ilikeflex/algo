@@ -28,6 +28,16 @@ Sample Input 2
 4 5 2 -1 -1 3 1 6 7 -1 -1 -1 -1 -1 -1
 Sample Output
 4 5 3 6
+Explanation
+The tree looks like
+
+             4
+          /      \
+       5           2
+                 /   \
+               3       1
+            /    \
+           6      7
 
 */
 import java.util.*;
