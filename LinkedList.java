@@ -115,7 +115,7 @@ public class LinkedList {
 			throw new Exception("No Elements in Linked List");
 		
 		if( index < 0 || index > size)
-			throw new Exception(" in Linked List");
+			throw new Exception(" Index is out in Linked List");
 		
 		Node temp = this.head;
 		
