@@ -1,0 +1,239 @@
+
+function sum(a) {
+
+    console.log(`a=${a}`);
+	return function(b) {
+
+        console.log(`a=${a},b=${b}`);
+		return b ? sum(a+b) : a;
+	}
+
+}
+
+
+
+console.log(sum(100)(5)());
+https://medium.com/coderbyte/a-tricky-javascript-interview-question-asked-by-google-and-amazon-48d212890703
+
+
+-------------------------------------------------------------------------------------------------------------
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.parent {
+  background-color: #001f3f;
+  display: flex;
+  padding: 20px;
+  border-style: solid;
+  border-color: yellow;
+}
+
+.child {  
+  background-color: #0074d9;
+  padding: 20px;
+  color: white;
+  border-style: solid;
+}
+
+.child-two {
+  flex: 1 1 auto;
+} 
+
+
+.child-three {
+  flex: 1 1 auto;
+}
+
+/*
+//No Shrink At All
+.child-three {
+  flex: 1 0 auto;
+}
+*/  
+-------------------------------------------------------------------------------------------------------------------  
+
+function nextGreaterElement(input){
+
+	for(let x = 0; x < input.length; ++x) {
+	
+		let element  = input[x];
+		let isNextGreatElementPresent = false;
+		
+		for(let y = x + 1; y < input.length; ++y){
+		
+			let nextgreaterelement = input[y];
+			
+			if(nextgreaterelement> element){
+				isNextGreatElementPresent = true;
+				console.log(`Element ${element} -> NGE ${nextgreaterelement}`);
+				break;
+			}
+		}
+		
+		if(!isNextGreatElementPresent){
+			console.log(`Element ${element} -> NGE -1`);
+		}
+	}
+
+}
+
+var arr = [4,5,2,25];
+console.log(nextGreaterElement(arr));
+
+------------------------------------------------------------------------------------------------------------------
+
+function createBase(input) {
+
+	var temp2 = input;	
+	console.log(`1. temp2 = ${temp2}, input = ${input}`);
+	
+	return function addSum(inputb) {	
+	
+		var sum ;
+
+		console.log(`1.5 temp2 = ${temp2}, input = ${inputb}, sum = ${sum}`);
+	
+		sum = temp2 + inputb;	
+		
+		temp2 = sum;
+		
+		console.log(`2. temp2 = ${temp2}, input = ${input}, inputb = ${inputb},  sum = ${sum}`);
+
+		return sum;	
+	}	
+	
+	//return addSum(input);
+	
+}
+
+/*
+createBase(6);
+createBase(10);
+console.log(createBase(11));*/
+
+
+
+//console.dir(createBase);
+var addSix = createBase(6);
+//addSix(10);
+//addSix(11);
+//addSix(9);
+
+------------------------------------------------------------------------------------------------------------------
+
+
+
+https://dzone.com/articles/immutability-in-javascriptwhy-and-when-should-you
+https://portswigger.net/web-security/csrf/tokens ( CSRF Tokens )
+https://nitropack.io/blog/post/web-caching-beginners-guide 
+
+//string and numbers are immutable data types
+var myString = "I am immutable"
+
+myString[2] = 'c'
+
+console.log(myString) //I am immutable
+
+//Arrays and objects are mutable in JavaScript
+//Objects
+var x = {
+    foo: 'bar'
+};
+
+var  y = x;
+
+x.foo = 'Something else';
+
+console.log(y.foo); // Something else
+
+console.log(x === y) // true
+
+//Arrays
+var x = ['foo'];
+var y = x.push('bar')
+console.log(x); // ['foo', 'bar']
+console.log(x === y) // true
+
+Both x and y are references to the same item, and the method push mutates the original array.
+
+const person = {
+  name: 'Jim',
+  age: 19
+}
+
+const newPerson = Object.assign({}, person, {
+  age: 22
+})
+
+console.log(newPerson === person) // false
+console.log(person) // { name: 'Jim', age: 19 }
+console.log(newPerson) // { name: 'Jim', age: 22 }
+
+//Use Spread Operator
+
+const person = {
+  name: 'Jim',
+  age: 19
+}
+
+const newPerson = {
+  ...person,
+  age: 22
+}
+
+console.log(newPerson === person) // false
+console.log(newPerson) // { name: 'Jim', age: 22 }
+
+
+//Deleting Object Properties
+const x = {
+    foo: 'bar',
+    far: 'boo',
+    faz: 'baz'
+};
+
+const { foo, ...everythingElse } = x;
+console.log(everythingElse); 
+
+// Will be { "far": "boo", "faz":"baz" }
+
+
+
+//If the name of the property to remove is dynamic, you can do this:
+const key = 'far';
+const { [key]: value, ...everythingElse} = x;
+console.log(everythingElse); 
+
+// Will be { "foo": "bar", "faz":"baz" }
+
+
+
+fruits= [
+            { 
+              id: 1, 
+              name: "Peach"
+            }, 
+
+            { 
+              id: 2, 
+              name: "Pear"
+            },
+
+            {
+              id:3,
+              name: "Apple"
+            }
+        ]
+   
+
+const updatedFruits = fruits.map(
+    item => { 
+        item.name = "Orange";
+        return item
+        }
+)
+
+console.log(fruits === updatedFruits) // True
