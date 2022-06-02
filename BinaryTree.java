@@ -302,6 +302,7 @@ public class BinaryTree {
 		System.out.println("Size = " + size(this.root));
 	}
 
+	//TO DO-> PRINT SIZE FOR TREE
 	private int size(Node node) {		
 		
 		int count = 0;	
