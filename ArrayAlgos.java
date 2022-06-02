@@ -151,11 +151,14 @@ public class ArrayAlgos 	{
 		for ( int counter = 0; counter < array.length -1; ++counter )
 		{
 			int min = counter;
+			
 			for(int arrayIndex = counter + 1; arrayIndex < array.length-1 ; ++arrayIndex) {
 				if(array[min]>array[arrayIndex]) //change here to change the increasing or decreasing order
 					min = arrayIndex;
 			}
-			swap(array, counter , min );
+			
+			if(min != counter)
+				swap(array, counter , min );
 		}
 	}
 	
@@ -172,6 +175,7 @@ public class ArrayAlgos 	{
 	public static void bubbleSort (int[] array){
 		for ( int counter = 0; counter <= array.length; ++counter )
 		{
+			//for(int arrayIndex=0; arrayIndex<array.length -  1 - counter ); ++arrayIndex) // easy to recall
 			for(int arrayIndex=0; arrayIndex<array.length - ( 1 + counter ); ++arrayIndex)
 			{
 				if(array[arrayIndex]>array[arrayIndex+1]) //change here to change the increasing or decreasing order
